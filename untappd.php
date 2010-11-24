@@ -110,7 +110,11 @@ add_action('wp_head', 'widget_untappd_css');
 
 function widget_untappd_init()
 {
-	$widget_ops = array('class' => 'widget_untappd', 'description' => __( "Untappd RSS Feeder" ) );
+	$widget_ops = array(
+		'class'       => 'widget_untappd', 
+		'description' => __('Untappd Widget')
+    );
+    
 	wp_register_sidebar_widget('untappd', __('Untappd'), 'widget_untappd', $widget_ops);
 }
 
@@ -123,43 +127,40 @@ function showuntappd_admin()
 		update_option('untappd_userid', stripslashes($_POST['untappd_userid']));
 		update_option('untappd_title', stripslashes($_POST['untappd_title']));
 
-		$strMessage = "<div id='message' class='updated fade'><p>Untappd RSS Options successfully updated.</p></div><br/>";
+		$message = "<div><p>Untappd RSS Options successfully updated.</p></div><br/>";
 	}
 ?>
 
 	<div class="wrap">
 		<h2>Untappd Widget</h2>
 			<?php if ($strMessage <> "") { print $strMessage; } ?>
-		</p> 
-
-		<fieldset class="options">
-			<legend><b>Untappd Options</b></legend>
-			<form method="post" action="">
-				<p>
-				<label for="untappd_rss">Your Untappd RSS link *:</label> 
-				<input name="untappd_rss" type="text" id="untappd_rss" value="<?php echo get_option('untappd_rss'); ?>" size="50" />
-				</p>
-				<p>
-				<label for="untappd_userid">Your Untappd User ID:</label>
-				<input name="untappd_userid" type="text" id="untappd_userid" value="<?php echo get_option('untappd_userid'); ?>" size="15" />
-				</p>
-				<p>
-				<label for="untappd_title">Widget Title:</label>
-				<input name="untappd_title" type="text" id="untappd_title" value="<?php echo get_option('untappd_title'); ?>" size="25" />
-				</p>
-				<p class="submit">
-					<input type="submit" name="untappd_action" value="Update Options" /> 
-				</p>
-				<b>* To find your RSS link:</b>
-				<div>
-					- Login to <a href="http://www.untappd.com/">Untappd.com</a><br />
-					- After you have checked in at least once, on the right side of your dashboard you should have a section called "Top 6 beers"<br />
-					- Click on the <b>See Your Distinct Beers</b> link in that section<br />
-					- The link to <b>RSS Feed</b> should be to the right under the <b>Your Beer History List</b> header<br />
-					- Copy the link and paste it above.<br />
-				</div>
-			</form>
-		</fieldset>
+		</p>
+		 
+		<form method="post" action="">
+			<p>
+			<label for="untappd_rss">Your Untappd RSS link *:</label> 
+			<input name="untappd_rss" type="text" id="untappd_rss" value="<?php echo get_option('untappd_rss'); ?>" size="50" />
+			</p>
+			<p>
+			<label for="untappd_userid">Your Untappd User ID:</label>
+			<input name="untappd_userid" type="text" id="untappd_userid" value="<?php echo get_option('untappd_userid'); ?>" size="15" />
+			</p>
+			<p>
+			<label for="untappd_title">Widget Title:</label>
+			<input name="untappd_title" type="text" id="untappd_title" value="<?php echo get_option('untappd_title'); ?>" size="25" />
+			</p>
+			<p class="submit">
+				<input type="submit" name="untappd_action" value="Update Options" /> 
+			</p>
+			<b>* To find your RSS link:</b>
+			<div>
+				- Login to <a href="http://www.untappd.com/">Untappd.com</a><br />
+				- After you have checked in at least once, on the right side of your dashboard you should have a section called "Top 6 beers"<br />
+				- Click on the <b>See Your Distinct Beers</b> link in that section<br />
+				- The link to <b>RSS Feed</b> should be to the right under the <b>Your Beer History List</b> header<br />
+				- Copy the link and paste it above.<br />
+			</div>
+		</form>
 	</div>
 
 <?php 
