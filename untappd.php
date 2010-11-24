@@ -23,19 +23,28 @@ function widget_untappd()
     $wp_untappd_title = (get_option('untappd_title') == '') ? "Beers I'm Drinking" : get_option('untappd_title');
     $wp_untappd_userid = get_option('untappd_userid');
     
-	$rss = fetch_rss($wp_untappd_rss);
 	echo wptexturize('<div id="widget_untappd">');
 	echo wptexturize('<div id="widget_untappd_header">' . $wp_untappd_title . '</div>');
 
 	echo wptexturize('<div id="widget_untappd_beer_list">');
 	
-	$limit = 5;
-	foreach ($rss->items as $item) {
-	    if ($limit == 0) {
-	        break;
-	    }
-		echo wptexturize('<div class="widget_untappd_beer"><a target="_blank" href="' . $item['link'] . '">' . $item['title'] . '</a></div>');
-		$limit++;
+	if ($wp_untappd_rss != '') {
+    	$rss = fetch_rss($wp_untappd_rss);
+    	
+    	if (count($rss->items) != 0) {
+        	$limit = 5;
+        	foreach ($rss->items as $item) {
+        	    if ($limit == 0) {
+        	        break;
+        	    }
+        		echo wptexturize('<div class="widget_untappd_beer"><a target="_blank" href="' . $item['link'] . '">' . $item['title'] . '</a></div>');
+        		$limit++;
+        	}
+    	} else {
+    	    echo wptexturize('<div class="widget_untappd_beer">What?!?  No beers yet?!?<br /><br /></div>');
+    	}
+	} else {
+	    echo wptexturize('<div class="widget_untappd_beer">Widget not setup yet<br /><br /></div>');
 	}
 
 	echo wptexturize('</div>');

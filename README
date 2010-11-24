@@ -1,0 +1,19 @@
+This is a simple widget that allows a user to display their Untappd.com 
+profile info information on their personal Wordpress site.
+
+Install this widget in wp-content/plugins folder then enable it from
+your plugin page in your admin section.  Options for the widget include
+the RSS feed from your untappd.com profile page, user ID for untappd.com,
+and header customization for the widget.
+
+This widget is not supported nor endorsed by untappd.com or anyone 
+associated with untappd.com.  It was created by Jason Austin independently.
+
+Jason Austin
+@jason_austin
+http://jasonawesome.com
+
+This code is released under the Creative Commons Attribution-ShareAlike 
+license.  Details here:  http://creativecommons.org/licenses/by-sa/3.0/
+
+All images and likeness of images remain property of untappd.com.
