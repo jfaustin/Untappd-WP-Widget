@@ -133,9 +133,8 @@ function showuntappd_admin()
 
 	<div class="wrap">
 		<h2>Untappd Widget</h2>
-			<?php if ($strMessage <> "") { print $strMessage; } ?>
-		</p>
-		 
+	    <?php if ($strMessage <> "") { print $strMessage; } ?>
+	    
 		<form method="post" action="">
 			<p>
 			<label for="untappd_rss">Your Untappd RSS link *:</label> 
